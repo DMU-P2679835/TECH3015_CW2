@@ -1,0 +1,931 @@
+/* import fonts from google font */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root{
+  /* Custom color scheme */
+  --main-color: #FFA500; 
+  --primary-bg-color:#fff; 
+  --secondary-bg-color:#eee; 
+  --primary-text-color:#222; 
+  --secondary-text-color:#666; 
+  --card-bg:  #fff;
+
+    /* Font family */
+  --body-font: 'PT Serif', serif;
+
+  /* .5rem=8px, 1rem=16px, 1.5rem=24px */
+  --biggest-font-size: 3rem;
+  --h1-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+  --smaller-font-size: .813rem;
+
+  /* Font Weight */
+  --font-meidum: 500;
+  --font-bold: 600;
+
+  /* Margenes Bottom */
+  --mb-0-25: .25rem;
+  --mb-0-5: .5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /* Z-index */
+  --z-fixed: 10;
+  --z-modal: 100;
+}
+
+/* Responsive Typography */
+@media screen and (max-width: 1024px){
+  :root{
+    --biggest-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: .983rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+  }
+
+}
+    
+/*============== BASE ===============*/
+
+/* Apply base styles to all elements */
+* {
+  margin: 0; /* Removes margin from all elements */
+  padding: 0; /* Removes padding from all elements */
+  box-sizing: border-box; /* Ensures the border and padding are included in the element's total width and height */
+}
+
+/* Set base font size and configure scroll behavior for html */
+html {
+  font-size: 62.5%; /* Sets the base font size for the HTML element to 62.5% */
+  overflow-x: hidden; /* Hides the horizontal scrollbar on the HTML element */
+  scroll-behavior: smooth; /* Enables smooth scrolling behavior on the HTML element */
+}
+
+/* Set default body styles */
+body {
+  overflow: hidden; /* Hides the scrollbar on the body element */
+  transition: .2s linear !important; /* Sets a transition effect of 0.2s with a linear timing function for all properties on the body element */
+  background: var(--secondary-bg-color); /* Sets the background color of the body element to a variable named "--secondary-bg-color" */
+}
+
+
+/* Define styles (Color Scheme) for dark theme */
+body.dark-theme{
+  --primary-bg-color: #222; 
+  --secondary-bg-color:#121212;
+  --primary-text-color:#fff;
+  --secondary-text-color:#eee;
+  --card-bg:  hsl(242, 14%, 10%);
+}
+
+/* Add padding to the body when active */
+body.active{
+  padding-left: 35rem;
+}
+
+/* Set default styles for sections */
+section {
+  padding: 3rem 2rem; /* Sets the top and bottom padding of the section to 3rem and the left and right padding to 2rem */
+  margin: 0 auto; /* Centers the section horizontally using auto margin */
+  max-width: 1200px; /* Sets the maximum width of the section to 1200px */
+  text-align: center; /* Centers the content inside the section */
+}
+
+
+/* Define styles for headings */
+h1,h2,h3{
+  color: black;
+  font-weight: var(--font-bold);
+}
+
+/* Remove list styling */
+ul{
+  list-style: none;
+}
+
+/* Remove link styling */
+a{
+  text-decoration: none;
+}
+
+/* Set image display properties */
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+/* Set styles for heading class */
+.heading {
+  margin-bottom: 3rem; /* Sets the bottom margin of the heading to 3rem */
+  text-align: center; /* Centers the text inside the heading */
+  color: var(--primary-text-color); /* Sets the text color of the heading to a variable named "--primary-text-color" */
+}
+
+/* Set styles for span inside heading */
+.heading span {
+  text-transform: uppercase; /* Transforms the text inside the span element to uppercase */
+  font-size: 4rem; /* Sets the font size of the text inside the span element to 4rem */
+  border-bottom: .5rem solid var(--primary-text-color); /* Sets a 0.5rem solid border at the bottom of the span element with a color of a variable named "--primary-text-color" */
+  background-color: rgb(233, 151, 0); /* Sets the background color of the span element to an RGB color value of 233, 151, 0 */
+}
+
+
+/*============== header ===============*/
+
+/* Define styles for the header */
+.header{
+  position: fixed; /* Fix the header's position on the top-left corner of the page */
+  top:0; left:-35rem; /* Set the initial position of the header */
+  height: 100vh; /* Set the height of the header to 100% of the viewport height */
+  background-color: white; /* Set the initial background color of the header */
+  border-right: .5rem solid var(--primary-text-color); /* Add a border to the right side of the header */
+  width: 35rem; /* Set the width of the header */
+  padding:3rem 2rem; /* Add padding to the header */
+  text-align: center; /* Center-align the header's content */
+  display: flex; /* Use Flexbox to arrange the header's content */
+  align-items: center; /* Center-align the header's content vertically */
+  justify-content: space-between; /* Distribute the header's content evenly */
+  flex-flow: column; /* Arrange the header's content in a column */
+  transition: .2s linear !important; /* Set a transition for the header's animation */
+  text-align: center; /* Center-align the header's text */
+  z-index: 1000; /* Set the header's stack order */
+  background-color:var(--secondary-bg-color); /* Set the header's background color according to the theme */
+}
+
+/* Set styles for the logo */
+.header .logo{
+  text-transform: uppercase; /* Transform the logo text to uppercase */
+  border-bottom: .5rem solid var(--primary-text-color); /* Add a border below the logo text */
+  font-weight: bolder; /* Set the font weight of the logo text to bolder */
+  font-size: 4.5rem; /* Set the font size of the logo text */
+  color:var(--primary-text-color); /* Set the color of the logo text according to the theme */
+}
+/* Set styles for the navbar */
+.header .navbar{
+  width: 100%; /* Set the width of the navbar to 100% */
+}
+
+/* Set styles for links inside the navbar */
+.header .navbar a{
+  display: block; /* Display each link as a block-level element */
+  font-size: 2.5rem; /* Set the font size of the navbar links */
+  padding:1.5rem; /* Add padding to the navbar links */
+  margin:.5rem; /* Add margin to the navbar links */
+  color:var(--primary-text-color); /* Set the color of the navbar links according to the theme */
+}
+
+/* Set styles for active and hover states of links inside the navbar */
+.header .navbar a.active,
+.header .navbar a:hover{
+  background-color: var(--main-color); /* Set the background color of active and hovered navbar links */
+}
+
+/* Set styles for follow links */
+.header .follow a{
+  font-size: 3rem; /* Set the font size of the follow links */
+  margin:0 1rem; /* Add margin to the follow links */
+  cursor: pointer; /* Set the cursor style for the follow links */
+  transition: .6s linear !important; /* Set a transition for the follow links' animation */
+}
+
+/* Set hover styles for follow links */
+.header .follow a:hover{
+  transform: rotate(360deg); /* Rotate the follow links when hovered */
+}
+
+/* This styles the menu button */
+#menu-btn {
+  position: absolute; /* Sets the position of the button to absolute */
+  top: 0; /* Sets the distance from the top of the page to 0 */
+  right: -5.5rem; /* Sets the distance from the right side of the page to -5.5rem */
+  height: 4.5rem; /* Sets the height of the button to 4.5rem */
+  line-height: 4.5rem; /* Sets the line-height of the button to 4.5rem */
+  width: 5rem; /* Sets the width of the button to 5rem */
+  font-size: 2.5rem; /* Sets the font size of the button to 2.5rem */
+  cursor: pointer; /* Sets the cursor to a pointer when hovering over the button */
+  background-color: var(--main-color); /* Sets the background color of the button to a variable named "--main-color" */
+  color: var(--primary-text-color); /* Sets the text color of the button to a variable named "--primary-text-color" */
+}
+
+/* This styles the header when it has the "active" class */
+.header.active {
+  left: 0; /* Sets the distance from the left side of the page to 0 when the "active" class is applied to the header */
+}
+
+
+
+/*=================== Home section Start ===================*/
+
+
+.home{
+  display: flex; /* Use Flexbox to arrange the home section content */
+  align-items: center; /* Center-align the home section content vertically */
+  flex-wrap: wrap; /* Enable wrapping of the flex items */
+  gap:2rem; /* Add a gap between the flex items */
+  min-height: 100vh; /* Set the minimum height of the home section to 100% of the viewport height */
+}
+
+
+.home .slideshow{
+  flex:1 1 40rem; /* Set the flex property of the image container to grow, shrink, and have a base width */
+}
+
+.home .slideshow img{
+  height: auto; /* Set the height of the image */
+  border:var(--border-bold); /* Set the border of the image */
+}
+
+.home .content{
+  flex:1 1 40rem; /* Set the flex property of the content container to grow, shrink, and have a base width */
+  margin-top: 5rem; /* Add top margin to the content container */
+}
+
+.home .content h1{
+  text-transform: uppercase; /* Transform the text to uppercase */
+  font-size: 4.5rem; /* Set the font size of the heading */
+  margin-bottom: .5rem; /* Add bottom margin to the heading */
+  color: var(--primary-text-color); /* Set the color of the heading */
+}
+
+.wrapper{
+  display: inline-flex; /* Use inline Flexbox to arrange the wrapper content */
+}
+
+.fixed-txt{ 
+  font-size: 5rem; /* Set the font size of the fixed text */
+  text-transform: uppercase; /* Transform the fixed text to uppercase */
+  padding-top: 4rem; /* Add top padding to the fixed text */
+  color: var(--primary-text-color); /* Set the color of the fixed text */
+}
+
+.moving-txt{
+  margin-left: 30px; /* Add left margin to the moving text container */
+  margin-top: 2.5rem; /* Add top margin to the moving text container */
+  height: 90px; /* Set the height of the moving text container */
+  line-height: 90px; /* Set the line-height of the moving text container */
+  overflow: hidden; /* Hide the overflow of the moving text container */
+  background-color: var(--secondary-bg-color); /* Set the background color of the moving text container */
+}
+
+.moving-txt li{
+  color: red; /* Set the color of the list items */
+  list-style: none; /* Remove the list-style from the list items */
+  font-size: 60px; /* Set the font size of the list items */
+  font-weight: 500; /* Set the font weight of the list items */
+  position: relative; /* Set the position of the list items */
+  top: 0; /* Set the initial position of the list items */
+  animation: move 4.5s steps(3) infinite; /* Add animation to the list items */
+}
+
+.moving-txt li span#Eng{
+  color: green; /* Set the color of the span element with id Eng */
+}
+
+.moving-txt li span#Chef{
+  color: blue; /* Set the color of the span element with id Chef */
+}
+
+@keyframes move {
+  100%{
+    top: -270px; /* Set the final position of the list items after animation */
+  }
+}
+
+.moving-txt li span::after{
+  content: ''; /* Add content to the span element */
+  position: absolute; /* Set the position of the content */
+  left: 0; /* Set the initial position of the content */
+  height: 100%; /* Set the height of the content */
+  width: 100%; /* Set the width of the content */
+  background: var(--secondary-bg-color); /* Set the background color of the content */
+  border-left: 2px solid red; /* Set the left border of the content */
+  animation: type 1.5s steps(10) infinite; /* Add animation to the content */
+}
+
+.moving-txt li span#Eng::after{
+  border-left: 2px solid green; /* Set the left border color of the content for the span with id Eng */
+}
+
+.moving-txt li span#Chef::after{
+  border-left: 2px solid blue; /* Set the left border color of the content for the span with id Chef */
+}
+
+@keyframes type{
+  40%, 60%{
+    left: calc(100% + 30px); /* Set the intermediate position of the content during animation */
+  }
+  100%{
+    left: 0; /* Set the final position of the content after animation */
+  }
+}
+
+.slideshow {
+  position: relative; /* Set the position of the slideshow container */
+  width: 600px; /* Set the width of the slideshow container */
+  height: 400px; /* Set the height of the slideshow container */
+  left: 50px; /* Set the left position of the slideshow container */
+  top: 0; /* Set the top position of the slideshow container */
+}
+
+.visible {
+  display: block; /* Set the display property of the visible class to block */
+}
+
+.hidden {
+  display: none; /* Set the display property of the hidden class to none */
+}
+
+
+/*=================== Home section end ===================*/
+
+
+/*=================== Skills section end ===================*/
+
+.about .row{
+  display: flex; /* Create a flexible container to hold the boxes */
+  align-items: center; /* Align items vertically centered */
+  justify-content: center; /* Horizontally center the boxes */
+  flex-wrap: wrap; /* Allow boxes to wrap if there isn't enough space */
+}
+
+.about .row .box{
+  flex:1 1 40rem; /* Set the flex property of each box, with a base size of 40rem */
+  background-color: var(--primary-bg-color); /* Set the background color of each box */
+  border-radius: .5rem; /* Add rounded corners to each box */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1); /* Add a subtle box shadow */
+  padding:.5rem 1.5rem; /* Add padding to each box */
+  margin:1.5rem; /* Add margin to each box */
+}
+
+.about .row .box .title{
+  color:var(--primary-text-color); /* Set the color of the title */
+  font-size: 2.5rem; /* Set the font size of the title */
+  padding:1rem 0; /* Add padding to the title */
+}
+
+.about .row .box .progress{
+  padding:1rem 0; /* Add padding to the progress bars */
+}
+
+.about .row .box .progress h3{
+  font-size: 1.7rem; /* Set the font size of the progress bar labels */
+  color:var(--primary-text-color); /* Set the color of the progress bar labels */
+  display: flex; /* Create a flexible container for progress bar labels */
+  justify-content: space-between; /* Add space between the progress bar labels */
+}
+
+.about .row .box .progress .bar{
+  height: 2.5rem; /* Set the height of the progress bars */
+  border-radius: .5rem; /* Add rounded corners to the progress bars */
+  border:.2rem solid var(--primary-text-color); /* Add a border to the progress bars */
+  padding:.5rem; /* Add padding to the progress bars */
+  margin:1rem 0; /* Add margin to the progress bars */
+}
+
+.about .row .box .progress .bar span{
+  height: 100%; /* Set the height of the inner bar */
+  border-radius: .3rem; /* Add rounded corners to the inner bar */
+  background-color:var(--main-color); /* Set the background color of the inner bar */
+  display: block; /* Set the display property of the inner bar to block */
+}
+
+/* The following rules set the width of each inner bar based on the skill level */
+.about .row .box:nth-child(1) .progress:nth-child(2) .bar span{
+  width: 84%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(3) .bar span{
+  width: 76%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(4) .bar span{
+  width: 60%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(5) .bar span{
+  width: 49%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(6) .bar span{
+  width: 69%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(2) .bar span{
+  width: 81%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(3) .bar span{
+  width: 72%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(4) .bar span{
+  width: 64%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(5) .bar span{
+  width: 80%;
+}
+.about .row .box:nth-child(2) .progress:nth-child(6) .bar span{
+  width: 66%;
+}
+/*=================== Skills section end ===================*/
+
+/*=================== Education section Start ===================*/
+
+.about .row .box .exp-box{
+  padding:0 1.8rem; /* Add padding to the experience box */
+  margin-top: 1rem; /* Add margin-top to the experience box */
+  margin-bottom: 2rem; /* Add margin-bottom to the experience box */
+  border-left: .2rem solid var(--main-color); /* Add a left border to the experience box */
+  position: relative; /* Set the position property of the experience box to relative */
+  text-align: left; /* Align the text to the left */
+}
+
+.about .row .box .exp-box span{
+  color:var(--primary-text-color); /* Set the color of the experience box text */
+}
+
+.about .row .box .exp-box h3{
+  color:var(--primary-text-color); /* Set the color of the experience box heading */
+  font-size: 2rem; /* Set the font size of the experience box heading */
+}
+
+.about .row .box .exp-box p{
+  color:var(--primary-text-color); /* Set the color of the experience box paragraph */
+  font-size: 1.5rem; /* Set the font size of the experience box paragraph */
+  padding:1rem 0; /* Add padding to the experience box paragraph */
+}
+
+.about .row .box .exp-box::before{
+  content:''; /* Set the content property of the pseudo-element to an empty string */
+  position: absolute; /* Set the position property of the pseudo-element to absolute */
+  top:0; left: -1rem; /* Position the pseudo-element at the top and to the left */
+  border-radius: 50%; /* Add rounded corners to the pseudo-element */
+  height: 2rem; /* Set the height of the pseudo-element */
+  width: 2rem; /* Set the width of the pseudo-element */
+  background: var(--main-color); /* Set the background color of the pseudo-element */
+}
+/*=================== Education section End ===================*/
+
+
+
+/*=================== Portfolio section Start ===================*/
+
+/* Set up the container for the buttons with flexbox for easy alignment and positioning.
+Center align items and allow them to wrap if necessary. Add padding for spacing. */
+.portfolio .button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding:1rem 0;
+}
+
+/* Style the individual buttons within the button-container:
+   Add margin for spacing, set the cursor to pointer for better user experience. */
+.portfolio .button-container .btn{
+  margin:1rem;
+  cursor: pointer;
+}
+
+/* Set up the container for images using flexbox for easy alignment and positioning. Center align items and allow them to wrap if necessary. Add padding for spacing. */
+.portfolio .image-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+/* Style the individual image boxes within the image-container:
+   Set dimensions, add margin for spacing, border-radius for rounded corners, box-shadow for depth effect, overflow as hidden to hide overflowing content, set height, position and border for proper positioning and visual separation. */
+.portfolio .image-container .box{
+  width:35rem;
+  margin: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 .5rem 1rem var(--primary-text-color);
+  overflow: hidden;
+  height: 25rem;
+  position: relative;
+  border:1rem solid var(--secondary-bg-color);
+  cursor: pointer;
+}
+
+/* Make sure the images inside the boxes are properly sized and positioned */
+.portfolio .image-container .box img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Set up the information overlay on the image boxes:
+   Set absolute positioning, dimensions, background color, use flexbox for alignment,
+   set opacity for transparency, and initial transform scale value to hide the overlay. */
+.portfolio .image-container .box .info{
+  position: absolute;
+  top:0; left: 0;
+  height: 100%;
+  width: 100%;
+  background:rgb(10, 10, 10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: .9;
+  transform: scale(0);
+}
+
+
+/* Reveal the information overlay when the image box is hovered */
+.portfolio .image-container .box:hover .info{
+  transform: scale(1);
+}
+
+/* Style the text inside the information overlay */
+.portfolio .image-container .box .info h3{
+  font-size: 2.5rem;
+  color:orange;
+}
+
+/*=================== Portfolio section End ===================*/
+
+
+/* Grid container for work items */
+.work_container {
+  display: grid;
+  grid-template-columns: repeat(2, 440px); /* 2 columns with a width of 440px each */
+  gap: 2rem; /* space between the grid items */
+  justify-content: center; /* horizontally center the grid items */
+  padding-top: 1rem; /* add padding to the top of the container */
+}
+
+/* Work filter styles */
+.work_filter {
+  display: flex; /* create a flexible container */
+  justify-content: center; /* horizontally center the filter items */
+  align-items: center; /* vertically center the filter items */
+  column-gap: 2rem; /* space between the filter items */
+  margin-bottom: 2rem; /* space below the filter container */
+}
+
+/* Work item styles */
+.work_item {
+  cursor: pointer; /* change the cursor to pointer on hover */
+  color: var(--primary-text-color); /* set the text color */
+  padding: .25rem .75rem; /* add padding around the work item */
+  font-weight: normal; /* set font-weight to normal */
+  border-radius: .5rem; /* round the work item's corners */
+  font-size: var(--h1-font-size); /* set font size using variable */
+}
+
+/* Work card styles */
+.work_card {
+  background-color: var(--card-bg); /* set card background color */
+  padding: 1.25rem; /* add padding inside the card */
+  border-radius: .5rem; /* round the card's corners */
+  color: var(--primary-text-color); /* set text color */
+  text-align: left; /* align text to the left */
+}
+
+/* Portfolio item details styles */
+.portfolio_item-details {
+  color: var(--primary-text-color); /* set text color */
+  display: none; /* hide the portfolio item details by default */
+}
+
+/* Active work item styles */
+.active-work {
+  background-color: hsl(19, 80%, 50%); /* set active work item background color */
+}
+
+/* Work image styles */
+.work_img {
+  border-radius: .5rem; /* round the image corners */
+  margin-bottom: var(--mb-1); /* add margin below the image */
+}
+
+/* Work title styles */
+.work_title {
+  font-size: var(--h3-font-size); /* set title font size using variable */
+  font-weight: var(--font-medium); /* set font-weight to medium */
+  margin-bottom: var(--mb-0-5); /* add margin below the title */
+  color: var(--primary-text-color); /* set title text color */
+}
+
+
+/* Work button styles */
+.work_button {
+  color: orange; /* set button text color */
+  font-size: var(--small-font-size); /* set font size using variable */
+  display: flex; /* use flexbox for layout */
+  align-items: center; /* align items vertically */
+  column-gap: .25rem; /* set gap between columns */
+  cursor: pointer; /* change cursor to pointer on hover */
+  font-size: var(--h3-font-size); /* set font size using variable */
+}
+
+/* Work button icon styles */
+.work_button-icon {
+  font-size: 1rem; /* set font size */
+  transition: .3s; /* set transition duration */
+}
+
+/* Work button hover effect */
+.work_button:hover .work_button-icon {
+  transform: translateX(.25rem); /* move the icon to the right on hover */
+}
+
+/* Portfolio popup styles */
+.portfolio_popup {
+  position: fixed; /* fix the position of the popup */
+  top: 0; left: 0; right: 0; bottom: 0; /* set popup dimensions */
+  background-color: rgba(0, 0, 0, .5); /* set background color with transparency */
+  display: flex; /* use flexbox for layout */
+  justify-content: center; /* center items horizontally */
+  align-items: center; /* center items vertically */
+  padding: 0 1rem; /* add padding to the sides */
+  z-index: var(--z-modal); /* set z-index using variable */
+  opacity: 0; /* set initial opacity to 0 */
+  visibility: hidden; /* set initial visibility to hidden */
+  transition: .3s; /* set transition duration */
+  color: var(--primary-text-color); /* set text color */
+}
+
+/* Portfolio popup open state */
+.portfolio_popup.open {
+  opacity: 1; /* set opacity to 1 when popup is open */
+  visibility: visible; /* set visibility to visible when popup is open */
+}
+
+/* Portfolio popup inner container styles */
+.portfolio_popup-inner {
+  background-color: var(--card-bg); /* set background color using variable */
+  width: 900px; /* set container width */
+  border-radius: .5rem; /* set container border-radius */
+  padding: 2.5rem; /* add padding to the container */
+  position: relative; /* set position to relative */
+}
+
+/* Portfolio popup content styles */
+.portfolio_popup-content {
+  display: grid; /* use grid for layout */
+  grid-template-columns: repeat(2, 1fr); /* create 2 equal columns */
+  align-items: center; /* align items vertically */
+  column-gap: 3rem; /* set gap between columns */
+}
+
+/* Portfolio popup close button styles */
+.portfolio_popup-close {
+  position: absolute; /* set position to absolute */
+  top: 1.5rem; /* set distance from the top */
+  right: 1.5rem; /* set distance from the right */
+  font-size: 1.5rem; /* set font size */
+  color: orange; /* set close button color */
+  cursor: pointer; /* change cursor to pointer on hover */
+}
+
+/* Portfolio popup image styles */
+.portfolio_popup-img {
+  border-radius: .5rem; /* set border-radius for the image */
+}
+
+/* Portfolio popup body heading styles */
+.portfolio_popup-body h3 {
+  color: var(--primary-text-color); /* set the heading color using variable */
+}
+
+/* Portfolio popup subtitle styles */
+.portfolio_popup-subtitle {
+  font-size: var(--h2-font-size); /* set font size using variable */
+  margin-bottom: var(--mb-0-25); /* set margin-bottom using variable */
+}
+
+/* Portfolio item details paragraph styles */
+.portfolio_item-details p {
+  color: var(--primary-text-color); /* set paragraph text color using variable */
+  font-size: var(--h2-font-size); /* set paragraph font size using variable */
+}
+
+/* Detail title styles */
+.detail_title {
+  font-size: var(--h2-font-size); /* set detail title font size using variable */
+  font-weight: var(--font-medium); /* set font weight using variable */
+  margin-bottom: var(--mb-1); /* set margin-bottom using variable */
+}
+
+/* Detail description styles */
+.detail_description {
+  font-size: var(--normal-font-size); /* set font size using variable */
+  margin-bottom: var(--mb-2); /* set margin-bottom using variable */
+}
+
+/* Detail info list item styles */
+.detail_info li {
+  margin-bottom: var(--mb-0-75); /* set margin-bottom using variable */
+  text-transform: capitalize; /* capitalize the first letter of each word */
+  font-size: var(--h3-font-size); /* set font size using variable */
+  color: var(--primary-text-color); /* set text color using variable */
+}
+
+/* Remove bottom margin from the last list item */
+.detail_info li:last-child {
+  margin-bottom: 0; /* set margin-bottom to 0 */
+}
+
+/* Detail info list item span styles */
+.detail_info li span {
+  font-weight: normal; /* set font-weight to normal */
+}
+
+/* Detail info list item link styles */
+.detail_info li a {
+  text-transform: lowercase; /* set link text to lowercase */
+  color: orange; /* set link color */
+}
+/*=================== Contact section Start ===================*/
+
+/* This styles the entire contact form section */
+.contact form {
+  max-width: 70rem; /* Sets the maximum width of the form to 70rem */
+  margin: 0 auto; /* Centers the form horizontally by setting the left and right margins to auto */
+}
+
+/* This styles each box in the contact form */
+.contact form .box {
+  width: 100%; /* Sets the width of the box to 100% */
+  padding: 1.4rem; /* Sets the padding inside the box to 1.4rem */
+  font-size: 2rem; /* Sets the font size inside the box to 2rem */
+  text-transform: none; /* Disables text transformation inside the box */
+  border: .1rem solid rgb(163, 163, 163); /* Sets the border of the box to a 0.1rem solid line with an RGB color value of 163, 163, 163 */
+  border-radius: 4rem; /* Sets the border radius of the box to 4rem */
+  margin: 1rem 0; /* Sets the top and bottom margin of the box to 1rem and the left and right margin to 0 */
+}
+
+/* This styles the textarea in the contact form */
+.contact form textarea {
+  height: 20rem; /* Sets the height of the textarea to 20rem */
+  resize: none; /* Disables resizing of the textarea */
+}
+
+/* This styles the flex container in the contact form */
+.contact form .flex {
+  display: flex; /* Sets the display property of the container to flex */
+  flex-wrap: wrap; /* Allows the items to wrap to a new line if there is not enough space */
+  justify-content: space-between; /* Distributes the items evenly with space between them */
+}
+
+/* This styles each box in the flex container */
+.contact form .flex .box {
+  width: 49%; /* Sets the width of each box in the container to 49% */
+}
+
+/* This styles the submit button in the contact form */
+.contact form .btn {
+  display: inline-block; /* Sets the display property of the button to inline-block */
+  margin-top: 1rem; /* Sets the top margin of the button to 1rem */
+  cursor: pointer; /* Sets the cursor to a pointer when hovering over the button */
+  padding: 1rem 3rem; /* Sets the padding inside the button to 1rem at the top and bottom and 3rem on the left and right */
+  border: 0.1rem solid var(--primary-text-color); /* Sets the border of the button to a 0.1rem solid line with a variable named "--primary-text-color" */
+  background-color: orange; /* Sets the background color of the button to orange */
+  color: var(--primary-text-color); /* Sets the text color of the button to a variable named "--primary-text-color" */
+  font-size: 2rem; /* Sets the font size of the button to 2rem */
+  margin-right: 100%; /* Moves the button to the right by setting the right margin to 100% */
+  border-radius: 4rem; /* Sets the border radius of the button to 4rem */
+}
+
+/* This styles the credit section at the bottom of the contact page */
+.credit {
+  text-align: center; /* Centers the text in the credit section */
+  background-color: var(--primary-bg-color); /* Sets the background color of the credit section to a variable named "--primary-bg-color" */
+  color: var(--primary-text-color); /* Sets the text color of the credit section to a variable named*/
+
+  padding: 3rem;  /* Sets the padding inside the credit section to 3rem */
+  font-size: 2rem; /* Sets the font size of the text inside the credit section to 2rem */
+}
+
+/* This styles the span element inside the credit section */
+.credit span{
+    color: orange; /* Sets the color of the span element inside the credit section to orange */
+}
+
+/*=================== Contact section End ===================*/
+
+/* This styles the theme toggler button */
+#theme-toggler {
+  position: fixed; /* Sets the position of the button to fixed */
+  top: 1rem; /* Sets the distance from the top of the page to 1rem */
+  right: 2rem; /* Sets the distance from the right side of the page to 2rem */
+  z-index: 998; /* Sets the z-index of the button to 998 */
+  height: 5rem; /* Sets the height of the button to 5rem */
+  width: 5rem; /* Sets the width of the button to 5rem */
+  line-height: 5rem; /* Sets the line-height of the button to 5rem */
+  text-align: center; /* Centers the text inside the button */
+  font-size: 2rem; /* Sets the font size of the text inside the button to 2rem */
+  background: var(--main-color); /* Sets the background color of the button to a variable named "--main-color" */
+  color: var(--primary-text-color); /* Sets the text color of the button to a variable named "--primary-text-color" */
+  cursor: pointer; /* Sets the cursor to a pointer when hovering over the button */
+  border-radius: 5rem; /* Sets the border radius of the button to 5rem */
+}
+
+/* This styles the theme toggler button when it has the "fa-sun" class */
+#theme-toggler.fa-sun {
+  transform: rotate(-180deg); /* Rotates the button 180 degrees when it has the "fa-sun" class */
+}
+
+
+/* This media query targets screens with a maximum width of 991px */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%; /* Sets the font size of the HTML element to 55% of the default size */
+  }
+
+  /* This styles the body element when it has the "active" class */
+  body.active {
+    padding-left: 0; /* Removes the left padding of the body element */
+  }
+
+  /* This styles the work container element */
+  .work_container {
+    grid-template-columns: repeat(2, 330px); /* Sets the grid template columns of the work container to two columns with a width of 330px */
+    gap: 2.5rem; /* Sets the gap between the grid items to 2.5rem */
+  }
+
+  /* This styles the moving text element */
+  .moving-txt {
+    margin-top: 2rem; /* Sets the top margin of the moving text element to 2rem */
+  }
+}
+@media (max-width: 798px) {
+  .slideshow {   
+    left: 100px; /* Set the left position of the slideshow container */
+  }
+}
+
+
+
+/* This media query targets screens with a maximum width of 768px */
+@media (max-width: 768px) {
+  /* This styles the work container element */
+  .work_container {
+    grid-template-columns: 330px; /* Sets the grid template columns of the work container to a single column with a width of 330px */
+  }
+}
+
+@media (max-width: 698px) {
+  .slideshow {   
+    left: 75px; /* Set the left position of the slideshow container */
+  }
+}
+@media (max-width: 598px) {
+  .slideshow {   
+    left: 50px; /* Set the left position of the slideshow container */
+  }
+}
+
+/* This media query targets screens with a maximum width of 450px */
+@media (max-width: 450px) {
+  html {
+    font-size: 50%; /* Sets the font size of the HTML element to 50% of the default size */
+  }
+
+  /* This styles the body element when it has the "active" class */
+  .header.active {
+    padding-top: 7rem; /* Sets the top padding of the header element to 7rem */
+  }
+
+  /* This styles the menu button when it has the "fa-times" class */
+  #menu-btn.fa-times {
+    right: 0; /* Sets the right position of the menu button to 0 */
+  }
+
+  /* This styles the image element in the home section */
+  .home .slideshow img {
+    height: auto; /* Sets the height of the image to auto */
+    width: 100%; /* Sets the width of the image to 100% */
+  }
+
+  /* This styles the moving text element */
+  .moving-txt {
+    margin-top: 1.5rem; /* Sets the top margin of the moving text element to 1.5rem */
+  }
+
+  /* This styles the span element inside the heading element */
+  .heading span {
+    font-size: 4rem; /* Sets the font size of the span element inside the heading element to 4rem */
+  }
+
+  /* This styles the boxes in the flex container in the contact form */
+  .contact form .flex .box {
+    width: 100%; /* Sets the width of the boxes in the flex container in the contact form to 100% */
+  }
+}
