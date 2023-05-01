@@ -605,7 +605,7 @@ Center align items and allow them to wrap if necessary. Add padding for spacing.
 
 /* Active work item styles */
 .active-work {
-  background-color: hsl(19, 80%, 50%); /* set active work item background color */
+  background-color: rgb(236, 154, 0); /* set active work item background color */
 }
 
 /* Work image styles */
@@ -625,7 +625,7 @@ Center align items and allow them to wrap if necessary. Add padding for spacing.
 
 /* Work button styles */
 .work_button {
-  color: orange; /* set button text color */
+  color: rgb(236, 154, 0); /* set button text color */
   font-size: var(--small-font-size); /* set font size using variable */
   display: flex; /* use flexbox for layout */
   align-items: center; /* align items vertically */
@@ -690,7 +690,7 @@ Center align items and allow them to wrap if necessary. Add padding for spacing.
   top: 1.5rem; /* set distance from the top */
   right: 1.5rem; /* set distance from the right */
   font-size: 1.5rem; /* set font size */
-  color: orange; /* set close button color */
+  color: rgb(236, 154, 0); /* set close button color */
   cursor: pointer; /* change cursor to pointer on hover */
 }
 
@@ -750,7 +750,7 @@ Center align items and allow them to wrap if necessary. Add padding for spacing.
 /* Detail info list item link styles */
 .detail_info li a {
   text-transform: lowercase; /* set link text to lowercase */
-  color: orange; /* set link color */
+  color: rgb(236, 154, 0); /* set link color */
 }
 /*=================== Contact section Start ===================*/
 
@@ -815,7 +815,7 @@ Center align items and allow them to wrap if necessary. Add padding for spacing.
 
 /* This styles the span element inside the credit section */
 .credit span{
-    color: orange; /* Sets the color of the span element inside the credit section to orange */
+    color: rgb(236, 154, 0); /* Sets the color of the span element inside the credit section to orange */
 }
 
 /*=================== Contact section End ===================*/
