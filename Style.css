@@ -196,6 +196,7 @@ img{
   margin:0 1rem; /* Add margin to the follow links */
   cursor: pointer; /* Set the cursor style for the follow links */
   transition: .6s linear !important; /* Set a transition for the follow links' animation */
+  color: var(--primary-text-color); /* Set logo color */
 }
 
 /* Set hover styles for follow links */
