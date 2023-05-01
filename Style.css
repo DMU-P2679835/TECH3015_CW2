@@ -815,7 +815,7 @@ Center align items and allow them to wrap if necessary. Add padding for spacing.
 
 /* This styles the span element inside the credit section */
 .credit span{
-    color: rgb(179, 124, 24); /* Sets the color of the span element inside the credit section to orange */
+    color: rgb(255, 115, 0); /* Sets the color of the span element inside the credit section to orange */
 }
 
 /*=================== Contact section End ===================*/
