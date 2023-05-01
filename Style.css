@@ -625,7 +625,7 @@ Center align items and allow them to wrap if necessary. Add padding for spacing.
 
 /* Work button styles */
 .work_button {
-  color: hsl(19, 80%, 50%); /* set button text color */
+  color: hsl(19, 100%, 41%); /* set button text color */
   font-size: var(--small-font-size); /* set font size using variable */
   display: flex; /* use flexbox for layout */
   align-items: center; /* align items vertically */
@@ -815,7 +815,7 @@ Center align items and allow them to wrap if necessary. Add padding for spacing.
 
 /* This styles the span element inside the credit section */
 .credit span{
-    color: hsl(19, 80%, 50%); /* Sets the color of the span element inside the credit section to orange */
+    color: rgb(236, 154, 0); /* Sets the color of the span element inside the credit section to orange */
 }
 
 /*=================== Contact section End ===================*/
